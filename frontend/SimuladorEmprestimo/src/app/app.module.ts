@@ -15,13 +15,16 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { CompoundInterestTableComponent } from './compound-interest-table/compound-interest-table.component';
 import { TableModule } from 'primeng/table';
 import { CurrencyMaskModule } from "ng2-currency-mask";
+import { MonetaryFormatPipe } from '../app/pipes/monetary-format.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     InvestmentSimulatorComponent,
-    CompoundInterestTableComponent
+    CompoundInterestTableComponent,
+    MonetaryFormatPipe // Adicione o pipe aqui
+
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,6 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
     TableModule,
     CurrencyMaskModule,
     InputMaskModule,
-    
     AppRoutingModule
   ],
   providers: [],

@@ -78,48 +78,44 @@ export class InvestmentSimulatorComponent implements OnInit {
     );
   }
   
-  gerarPdf() {
+   gerarPdf() {
     const pdf = new jsPDF();
 
-    const margin = 10; // Margin between logo and content
+    const margin = 10;
     const divToPrint = document.getElementById("conteudo");
 
-    // Load the image from the assets folder and convert it to a data URL
-    const logoDataURL = '../../assets/logo.png'; // Adjust the path and filename as needed
-    const logoWidth = pdf.internal.pageSize.width - 20; // Logo spans the entire width
-    const logoHeight = 60; // Adjust as needed
+    const logoDataURL = '../../assets/logo.png';
+    const logoWidth = pdf.internal.pageSize.width - 20;
+    const logoHeight = 60;
 
-    // Add the company logo at the top
     pdf.addImage(logoDataURL, 'PNG', 10, margin, logoWidth, logoHeight);
 
-    // Set font and size for title
     pdf.setFont('times', 'bold');
     pdf.setFontSize(18);
 
-    // Add title and date
     const title = 'Simulação de Investimento - JV Invest';
     const date = new Date().toLocaleDateString('pt-BR');
-    pdf.text(title, 10, margin + logoHeight + 10); // Adjust the Y-coordinate as needed
+    pdf.text(title, 10, margin + logoHeight + 10);
     pdf.setFontSize(12);
-    pdf.text(`Data da Simulação: ${date}`, 10, margin + logoHeight + 17); // Adjust the Y-coordinate as needed
+    pdf.text(`Data da Simulação: ${date}`, 10, margin + logoHeight + 17);
 
-    // Set font and size for content
-    pdf.setFont('times', 'normal');
+    pdf.setFont('Helvetica', 'normal');
     pdf.setFontSize(14);
-
-    // Add content
     const contentX = 10;
-    let contentY = margin + logoHeight + 35; // Adjust the starting Y-coordinate as needed
+    let contentY = margin + logoHeight + 35;
+    
     pdf.text(`Valor Futuro: R$ ${this.investmentResult.futureValue.toFixed(2)}`, contentX, contentY);
-    contentY += 10;
+    contentY += 8;
     pdf.text(`Renda Mensal: R$ ${this.investmentResult.monthlyIncome.toFixed(2)}`, contentX, contentY);
 
-    const table = document.getElementById("tabela"); // ID of the HTML table element
+    const table = document.getElementById("tabela");
     if (table) {
         const rows = table.getElementsByTagName("tr");
+        const headerRow = rows[0];
+        const headerCells = headerRow.getElementsByTagName("th");
+        
         let tableData = [];
 
-        // Loop through the rows of the HTML table and extract the data
         for (let i = 1; i < rows.length; i++) {
             const row = rows[i];
             const cells = row.getElementsByTagName("td");
@@ -128,15 +124,14 @@ export class InvestmentSimulatorComponent implements OnInit {
             for (let j = 0; j < cells.length; j++) {
                 rowData.push(cells[j].innerText);
             }
-
+            
             tableData.push(rowData);
         }
 
-        const lineHeight = 10; // Height of each line
-        const cellPadding = 2; // Padding for cells
-        const cellWidth = (pdf.internal.pageSize.width - 20) / tableData[0].length;
+        const lineHeight = 15;
+        const cellPadding = 2;
+        const cellWidth = (pdf.internal.pageSize.width - 20) / headerCells.length;
 
-        // Add data rows
         for (let rowIndex = 0; rowIndex < tableData.length; rowIndex++) {
             if (contentY + lineHeight > pdf.internal.pageSize.height - margin) {
                 pdf.addPage();
@@ -144,21 +139,21 @@ export class InvestmentSimulatorComponent implements OnInit {
             }
 
             const rowData = tableData[rowIndex];
-            // const bgColor = rowIndex % 2 === 0 ? 'red' : 'blue'; // Convert to string
+            const bgColor = rowIndex % 2 === 0 ? '#f2f2f2' : '#ffffff';
 
             for (let colIndex = 0; colIndex < rowData.length; colIndex++) {
-                // pdf.setFillColor(bgColor);
-                // pdf.rect(contentX + colIndex * cellWidth, contentY, cellWidth, lineHeight, 'F');
-                pdf.text(rowData.join('\t'), contentX, contentY);
-              }
+                pdf.setFillColor(bgColor);
+                pdf.rect(contentX + colIndex * cellWidth, contentY, cellWidth, lineHeight, 'F');
+                pdf.text(rowData[colIndex], contentX + colIndex * cellWidth + cellPadding, contentY + lineHeight / 2, { baseline: 'middle' });
+            }
 
             contentY += lineHeight;
         }
     }
 
-    // Save the PDF
     pdf.save('investimento.pdf');
 }
+
 
 
 

@@ -42,9 +42,11 @@
 
         <div class="result" *ngIf="investmentResult">
             <h3>Resultado da Simulação:</h3>
-            <p>Valor Futuro: {{ investmentResult.futureValue | currency:'BRL':'symbol':'1.2-2' }}</p>
+            <p>Valor Futuro: R$ {{ investmentResult.futureValue | monetaryFormat }}</p>
+
             <p>Após esse periodo com esse valor parado você terá</p>
-            <p>Renda Mensal: {{ investmentResult.monthlyIncome | currency:'BRL':'symbol':'1.2-2' }}</p>
+            <p>Renda Mensal: R$ {{ investmentResult.monthlyIncome | monetaryFormat }}</p>
+
             <button type="submit" class="btn btn-primary" (click)="gerarPdf()">Baixar Simulação</button>
 
         </div>
