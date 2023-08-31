@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Investimento</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeicons/primeicons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeng/resources/themes/saga-blue/theme.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeng/resources/primeng.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="header">Simulador de Investimento</h1>
+        <p class="description">Calcule quanto seu investimento pode crescer ao longo do tempo.</p>
+        <p-messages [value]="errorMessages" severity="error"></p-messages>
+        <p-messages [value]="successMessages" severity="success"></p-messages>
+        <form class="form" [formGroup]="investmentForm" (ngSubmit)="simulateInvestment()">
+            <div class="form-group">
+                <label for="initialAmount">Valor Inicial:</label>
+                <input type="number" class="input-field" id="initialAmount" formControlName="initialAmount" required>
+
+            </div>
+            <div class="form-group">
+                <label for="interestRate">Taxa de Juros Anual (%):</label>
+                <input type="number" class="input-field" id="interestRate" formControlName="interestRate" required>
+            </div>
+            <div class="form-group">
+                <label for="years">Número de Anos:</label>
+                <input type="number" class="input-field" id="years" formControlName="years" required>
+            </div>
+            <div class="form-group">
+                <label for="monthlyContribution">Contribuição Mensal:</label>
+                <input type="number" class="input-field" id="monthlyContribution" formControlName="monthlyContribution">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Simular Investimento</button>
+        </form>
+
+
+        <div class="result" *ngIf="investmentResult">
+            <h3>Resultado da Simulação:</h3>
+            <p>Valor Futuro: {{ investmentResult.futureValue | currency:'BRL':'symbol':'1.2-2' }}</p>
+            <p>Após esse periodo com esse valor parado você terá</p>
+            <p>Renda Mensal: {{ investmentResult.monthlyIncome | currency:'BRL':'symbol':'1.2-2' }}</p>
+            <button type="submit" class="btn btn-primary" (click)="gerarPdf()">Baixar Simulação</button>
+
+        </div>
+        <div class="illustration">
+            <img src="../../assets/5035121.jpg" alt="Ilustração de Investimento">
+        </div>
+        <div class="info">
+            <p>Os cálculos são baseados em juros compostos. Lembre-se de que as taxas de retorno podem variar e os
+                resultados são apenas estimativas.</p>
+        </div>
+        <app-compound-interest-table
+        [initialAmount]="investmentForm.get('initialAmount')?.value"
+        [interestRate]="investmentForm.get('interestRate')?.value"
+        [years]="investmentForm.get('years')?.value">
+      </app-compound-interest-table>
+      
+
+        <div class="help-links">
+            <a href="/como-funciona">Saiba mais sobre como funciona</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/primeflex@2.0.0/css/primeflex.min.css"></script>
+    <script src="https://cdn.jsdelivr.net/npm/primeng@12.1.1/primeng.min.js"></script>
+</body>
+
+</html>

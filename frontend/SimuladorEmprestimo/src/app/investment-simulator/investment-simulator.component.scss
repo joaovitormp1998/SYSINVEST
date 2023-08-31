@@ -1,0 +1,98 @@
+/* styles.css */
+
+/* styles.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('../../assets/invest.jpg'); /* Substitua pelo caminho da imagem desejada */
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif; /* Exemplo de fonte, substitua conforme necessário */
+}
+
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.container {
+    /* Resto do seu estilo aqui */
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+.header {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.description {
+    font-size: 16px;
+    color: #888;
+    margin-bottom: 20px;
+}
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+.result, .error, .success {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+}
+.result h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.illustration img {
+    max-width: 100%;
+    height: auto;
+}
+.info {
+    font-size: 14px;
+    color: #888;
+    margin-top: 20px;
+}
+.help-links {
+    margin-top: 20px;
+}
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.result {
+    margin-top: 20px;
+}
