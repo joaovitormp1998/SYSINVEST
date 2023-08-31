@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputMaskModule } from 'primeng/inputmask';
 import { CompoundInterestTableComponent } from './compound-interest-table/compound-interest-table.component';
 import { TableModule } from 'primeng/table';
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { TableModule } from 'primeng/table';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule // Adicione o ReactiveFormsModule aqui
-    ,
+        ,
     HttpClientModule,
     BrowserAnimationsModule,
     ButtonModule,
@@ -34,8 +35,9 @@ import { TableModule } from 'primeng/table';
     MessageModule,
     InputNumberModule,
     TableModule,
-
+    CurrencyMaskModule,
     InputMaskModule,
+    
     AppRoutingModule
   ],
   providers: [],

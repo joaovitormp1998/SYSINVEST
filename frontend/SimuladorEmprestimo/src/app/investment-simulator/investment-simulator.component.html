@@ -19,20 +19,21 @@
         <form class="form" [formGroup]="investmentForm" (ngSubmit)="simulateInvestment()">
             <div class="form-group">
                 <label for="initialAmount">Valor Inicial:</label>
-                <input type="number" class="input-field" id="initialAmount" formControlName="initialAmount" required>
+                <input  currencyMask class="input-field" [options]="currencyOptions" id="initialAmount" formControlName="initialAmount" required>
 
             </div>
             <div class="form-group">
                 <label for="interestRate">Taxa de Juros Anual (%):</label>
                 <input type="number" class="input-field" id="interestRate" formControlName="interestRate" required>
             </div>
+            
             <div class="form-group">
                 <label for="years">Número de Anos:</label>
                 <input type="number" class="input-field" id="years" formControlName="years" required>
             </div>
             <div class="form-group">
                 <label for="monthlyContribution">Contribuição Mensal:</label>
-                <input type="number" class="input-field" id="monthlyContribution" formControlName="monthlyContribution">
+                <input  currencyMask [options]="currencyOptions" class="input-field" id="monthlyContribution" formControlName="monthlyContribution">
             </div>
 
             <button type="submit" class="btn btn-primary">Simular Investimento</button>
@@ -54,7 +55,8 @@
             <p>Os cálculos são baseados em juros compostos. Lembre-se de que as taxas de retorno podem variar e os
                 resultados são apenas estimativas.</p>
         </div>
-        <app-compound-interest-table
+        <app-compound-interest-table 
+        *ngIf="requestData"
         [initialAmount]="investmentForm.get('initialAmount')?.value"
         [interestRate]="investmentForm.get('interestRate')?.value"
         [years]="investmentForm.get('years')?.value">

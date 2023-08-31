@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eWNSF4mEQUCIFfOCs4bKWWswImR7Vao1YYGBxkwpoE4g51aD1TjK7/mSyadJ3Y2+PBL3sDJz1K9kXN8RJ85ffg==",
+  "dgSpecHash": "sKDzEwlo6lAF2nnwkMLrTwgU7GkryJAI8DH65np8uM71mJ3a2lFelWI2NoUPF4O9Q9b4fKtf+RgZnWeyzZmAhA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\JoãoVitorMonsores\\simuladordeemprestimo\\sistemainvestimentos\\backend\\SimuladorEmprestimo\\SimuladorEmprestimo.API\\SimuladorEmprestimo.API.csproj",
+  "projectFilePath": "C:\\Users\\JoãoVitorMonsores\\Documents\\SYSINVEST\\backend\\SimuladorEmprestimo\\SimuladorEmprestimo.API\\SimuladorEmprestimo.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\JoãoVitorMonsores\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\JoãoVitorMonsores\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
